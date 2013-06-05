@@ -19,10 +19,21 @@
     // Cordova is ready
     //
     function onDeviceReady() {
-        var myContact = navigator.contacts.create({"displayName": "Test User"});
-        myContact.note = "This contact has a note.";
-        console.log("The contact, " + myContact.displayName + ", note: " + myContact.note);
+        navigator.compass.getCurrentHeading(onSuccess, onError);
     }
+
+    // onSuccess: Get the current heading
+    //
+    function onSuccess(heading) {
+        alert('Heading: ' + heading.magneticHeading);
+    }
+
+    // onError: Failed to get the heading
+    //
+    function onError(compassError) {
+        alert('Compass Error: ' + compassError.code);
+    }
+
 </script>
 
 <body data-gwen="red">
@@ -53,7 +64,7 @@
             <a href="mailto:gwenlangeberg@gmail.com?subject=hello%20Gwen&body=what%20are%20you%20Doing?" data-role="button"> Order Pizza Now by Email </a>
         </p>
         <h1>Example</h1>
-        <p>Create Contact</p>
+        <p>getCurrentHeading</p>
 
     </div>
 
